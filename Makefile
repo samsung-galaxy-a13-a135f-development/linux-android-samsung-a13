@@ -511,6 +511,10 @@ ifneq ($(KBUILD_SRC),)
 	    $(srctree) $(objtree) $(VERSION) $(PATCHLEVEL)
 endif
 
+PLATFORM_VERSION ?= 13
+@echo "PLATFORM_VERSION: $(PLATFORM_VERSION)"
+export PLATFORM_VERSION
+
 ifeq ($(cc-name),clang)
 # Individual arch/{arch}/Makefiles should use -EL/-EB to set intended
 # endianness and -m32/-m64 to set word size based on Kconfigs instead of
