@@ -1637,10 +1637,8 @@ static struct task_struct *_pick_next_task_rt(struct rq *rq)
 
 	do {
 		rt_se = pick_next_rt_entity(rq, rt_rq);
-		BUG_ON(!rt_se);
-		if (rt_se->on_rq)
-			frt_update_load_avg(rt_rq, rt_se, 0);
-		rt_rq->curr = rt_se;
+		if (unlikely(!rt_se))
+			return NULL;
 		rt_rq = group_rt_rq(rt_se);
 	} while (rt_rq);
 
