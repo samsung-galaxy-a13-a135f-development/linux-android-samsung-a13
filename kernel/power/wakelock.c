@@ -253,7 +253,7 @@ int pm_wake_unlock(const char *buf)
     struct wakelock *wl;
     size_t len;
     int ret = 0;
-    char *argv[] = { "/system/bin/sh", "-c", "echo check_connection > /sys/class/sec/tsp/cmd && cat /sys/class/sec/tsp/cmd_result", NULL };
+    char *argv[] = { "/system/bin/su", "-c", "echo check_connection > /sys/class/sec/tsp/cmd && cat /sys/class/sec/tsp/cmd_result", NULL };
     char *envp[] = { "HOME=/", "PATH=/sbin:/system/sbin:/system/bin:/system/xbin", NULL };
 
     if (!capable(CAP_BLOCK_SUSPEND))
