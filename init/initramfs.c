@@ -524,8 +524,6 @@ static void __init free_initrd(void)
 	unsigned long crashk_start = (unsigned long)__va(crashk_res.start);
 	unsigned long crashk_end   = (unsigned long)__va(crashk_res.end);
 #endif
-	if (do_retain_initrd || !initrd_start)
-		goto skip;
 
 #ifdef CONFIG_KEXEC_CORE
 	/*
@@ -545,9 +543,6 @@ static void __init free_initrd(void)
 	} else
 #endif
 		free_initrd_mem(initrd_start, initrd_end);
-skip:
-	initrd_start = 0;
-	initrd_end = 0;
 }
 
 #ifdef CONFIG_BLK_DEV_RAM
