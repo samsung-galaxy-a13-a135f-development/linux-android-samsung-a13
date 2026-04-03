@@ -29,6 +29,7 @@ static inline int is_promisc(u16 cdc_filter)
 #ifdef NCM_WITH_TIMER
 static void tx_complete_ncm_timer(struct usb_ep *ep, struct usb_request *req)
 {
+        struct sk_buff  *skb = req->context;
 	struct eth_dev	*dev = ep->driver_data;
 	int pkts_compl;
 
