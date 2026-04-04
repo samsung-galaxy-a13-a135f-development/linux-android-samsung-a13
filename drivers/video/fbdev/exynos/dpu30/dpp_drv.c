@@ -22,7 +22,7 @@
 #include "decon.h"
 #include "format.h"
 
-int dpp_log_level = 6;
+int dpp_log_level = 0;
 
 struct dpp_device *dpp_drvdata[SOC_DPP_CNT];
 
@@ -52,10 +52,10 @@ void dpp_op_timer_handler(unsigned long arg)
 	if (!decon_is_bypass(decon))
 		dpp_dump(dpp);
 
-	if (dpp->dpp_config->config.compression)
-		dpp_info("Compression Source is %s of DPP[%d]\n",
-			dpp->dpp_config->config.dpp_parm.comp_src == DPP_COMP_SRC_G2D ?
-			"G2D" : "GPU", dpp->id);
+//	if (dpp->dpp_config->config.compression)
+//		dpp_info("Compression Source is %s of DPP[%d]\n",
+//			dpp->dpp_config->config.dpp_parm.comp_src == DPP_COMP_SRC_G2D ?
+//			"G2D" : "GPU", dpp->id);
 
 	dpp_info("DPP[%d] irq hasn't been occured", dpp->id);
 }
