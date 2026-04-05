@@ -3638,11 +3638,11 @@
 
 			reserved-memory {
 
-				bootloader_fb {
-					compatible = "exynos,fb_handover";
+			fb: bootloader_fb {
 					reg = <0x00 0xfa000000 0xd00000>;
 					phandle = <0x42>;
 				};
+			
 			};
 		};
 	};
