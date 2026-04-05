@@ -729,6 +729,7 @@ static void madera_init_debugfs(struct snd_soc_card *card)
 
 static int madera_amp_late_probe(struct snd_soc_card *card, int dai)
 {
+	return 0;
 	struct madera_drvdata *drvdata = card->drvdata;
 	struct snd_soc_pcm_runtime *rtd;
 	struct snd_soc_dai *amp_dai;
@@ -771,6 +772,8 @@ static int madera_amp_late_probe(struct snd_soc_card *card, int dai)
 
 static int exynos3830_late_probe(struct snd_soc_card *card)
 {
+
+	return 0;
 	struct madera_drvdata *drvdata = card->drvdata;
 	struct snd_soc_pcm_runtime *rtd;
 	struct snd_soc_dai *aif_dai;
