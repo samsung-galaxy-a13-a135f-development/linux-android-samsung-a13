@@ -284,6 +284,13 @@ config EXYNOS_DEBUG_FREQ
 	  If this config is set, check constraint freq every time which cpufreq,
 	  devfreq are changed. In case of that, print error message
 
+config EXYNOS_LOG_CLEANUP_REVERT
+	bool "Don't silence useless kernel logs"
+	default n
+	help
+	  If this option is enabled you will gain a lot
+	  of useless logs in dmesg.
+
 source "drivers/soc/samsung/exynos_cpu_perf/Kconfig"
 endif
 
