@@ -234,12 +234,14 @@ int tz_iwlog_init(void)
 			per_cpu(tz_iwlog_buffer, i) = buffer;
 	}
 
+#if defined(CONFIG_EXYNOS_LOG_CLEANUP_REVERT)
 	tz_iwlog_kthread = kthread_run(tz_iwlog_kthread_handler, NULL, "tz_iwlog_thread");
 	if (IS_ERR(tz_iwlog_kthread)) {
 		log_error(tzdev_iwlog, "Failed to create kernel thread, error=%ld\n",
 				PTR_ERR(tz_iwlog_kthread));
 		return PTR_ERR(tz_iwlog_kthread);
 	}
+#endif
 
 	ret = tzdev_atomic_notifier_register(TZDEV_POST_SMC_NOTIFIER, &tz_iwlog_post_smc_notifier);
 	if (ret) {
