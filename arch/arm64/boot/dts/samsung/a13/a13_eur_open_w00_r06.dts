@@ -3367,11 +3367,6 @@
 
 		__overlay__ {
 
-
-			decon_f@0x13060000 {status = "disabled";};
-			dphy_m4s0_dsim0@0x13080000 {status = "disabled";};
-			dsim@0x13070000 {status = "disabled";};
-
 			lcd_fixed_regulator {
 				compatible = "simple-bus";
 				phandle = <0x89>;
@@ -3411,7 +3406,6 @@
 					regulator-boot-on;
 					phandle = <0x8d>;
 				};
-
 			};
 
 			decon_board_hx83112f {
@@ -3653,8 +3647,9 @@
 			reserved-memory {
 
 				bootloader_fb {
+					compatible = "exynos,fb_handover";
 					reg = <0x00 0xfa000000 0xd00000>;
-					no-map;
+					phandle = <0x42>;
 				};
 			};
 		};
@@ -4406,21 +4401,7 @@
 		target = <0xffffffff>;
 
 		__overlay__ {
-
-			#address-cells = <1>;
-			#size-cells = <1>;
-			ranges;
-			bootargs_ext = "root=/dev/ram0 androidboot.hardware=exynos850 androidboot.boot_devices=12100000.dwmmc0 quiet fbcon=map:0";
-
-			framebuffer@fa000000 {
-			compatible = "simple-framebuffer";
-			reg = <0xfa000000 0xd00000>;
-			width = <1080>;
-			height = <2408>;
-			stride = <4320>;
-			format = "a8r8g8b8";
-			status = "okay";
-			};
+			bootargs_ext = "root=/dev/ram0 androidboot.hardware=exynos850 androidboot.boot_devices=12100000.dwmmc0";
 		};
 	};
 
@@ -7494,6 +7475,7 @@
 		nt36672c_tianma = "/fragment@lcd/__overlay__/nt36672c_tianma";
 		decon_board_td4375 = "/fragment@lcd/__overlay__/decon_board_td4375";
 		td4375_boe = "/fragment@lcd/__overlay__/td4375_boe";
+		fb_handover = "/fragment@lcd/__overlay__/reserved-memory/bootloader_fb";
 		disp_conn_ctrl = "/fragment@44/__overlay__/disp-conn-ctrl";
 		disp_rst_ctrl = "/fragment@46/__overlay__/disp-rst-ctrl";
 		disp_blen_ctrl = "/fragment@46/__overlay__/disp-blen-ctrl";
